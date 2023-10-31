@@ -12,16 +12,10 @@ User Story & Acceptance Criteria follow the AS AN / I WANT / SO THAT format.
 * [User Story](#user-story) 
   
 * [Acceptance Criteria](#acceptance-criteria)
-  
-* [Technologies Used](#technologies-used)  
-
-* [Usage](#usage)
 
 * [Credits](#credits)
 
-* [Presentation](#presentation) 
-
-* [Demo](#demo) 
+* [Review](#review) 
 
 * [License](#license) 
 
@@ -45,11 +39,6 @@ GIVEN a regex tutorial
     THEN I find a detailed explanation of what a specific component of the regex does
 * WHEN I reach the end of the tutorial
     THEN I find a section about the author and a link to the author’s GitHub profile
-
-
-## Usage
-
-As mentioned above, users can create an account, login, create a review/rate books you've read and also read reviews from other users!
 
 
 ## Credits
