@@ -1,5 +1,5 @@
 # Regex Tutorial
-This is a tutorial that explains how a specific regular expression, or regex, functions by breaking down each part of the expression and describing what it does.
+This is a tutorial that explains how a specific regular expression, or regex, functions by breaking down each part of the expression and describing what it does. The following regular expression can be used for matching emails. One use for this code is that it can be used to validate to make sure that an email follows the correct format.
 
 ## Description
 
