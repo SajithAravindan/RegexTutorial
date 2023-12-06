@@ -35,7 +35,7 @@ In the matching email code,
 
 `/^`([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})`$/`, 
 
-the anchors are the `^` and the `$`, which are highlighted. The caret `^` defines the beginning of the string and the dollar sign `$` defines the end of the string.
+the anchors are the **`^`** and the **`$`**, which are highlighted. The caret `^` defines the beginning of the string and the dollar sign `$` defines the end of the string.
 
 This code specifically is saying that we are looking for something that starts with 
 
@@ -47,12 +47,32 @@ what the anchor means is that if we are to find a match it has follow those init
 
 So, it must start and end with the given parameters within the code. 
 
+Additionally, the <font color="red">'@'</font> symbol is a mandatory component of any valid email address. It serves as the separator between the local part (before '@') and the domain part (after '@'). The local part typically represents the username or mailbox name of the email recipient, and the domain part represents the mail server domain. The presence of the '@' symbol is enforced in the regex.
+
+Examples:
+
+Valid email: john.doe@example.com
+
+Local Part: john.doe<br />
+'@' Symbol<br />
+Domain Part: example.com<br />
+<font color="red">'@'</font> Symbol separating local part and domain.
+
+Invalid email: john.doe example.com
+
+Local Part: john.doe<br />
+Domain Part: example.com<br />
+Missing dot ('@') before the domain.
+
+The <font color="red">'@'</font> symbol ensures that the email address follows the standard structure of having a local part, '@' symbol, domain part.
 
 ### Quantifiers
 
 A quantifier is a repitition operator. Quantifiers let the system know to match the preceding token a set number of times. It is used to determine how many times a specific character or group of characters needs to be present in order to have a match.
 
-For instance, if we used the following code in our regex, xyz+ then this will match any string xy followed by at least one z. So, if we look at our code for matching the email:
+Quantifiers **`(+, *, ?)`** determine the repetition of the preceding token.
+
+For instance, if we used the following code in our **email regex**, xyz+ then this will match any string xy followed by at least one z. So, if we look at our code for matching the email:
 
 `([a-z0-9_\.-]+)`
 
@@ -81,6 +101,8 @@ What this will do is it will match where it starts with the # and that has to co
 
 ### Character Classes
 
+Character classes `(\d, \s, etc.)` match specific character types. In the below example:
+
 `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`
 
 `\d` is present in the given matching email code and what it will match a single letter character, a-z, after the `@` sign in the email address. Basically ensuring that a letter is matched after the `@ `in the email and not a number or special character.
@@ -99,7 +121,7 @@ The following are additional examples of character classes that are not found in
 
 ### Flags
 
-There are no regex flags in our example. Flags will always follow the closing forward slash of an expression, and change how it is interpreted.
+There are no regex flags in our example. Flags `(i, g, etc.)` alter regex interpretation. Flags will always follow the closing forward slash of an expression, and change how it is interpreted.
 
 However, the following are some examples.
 
@@ -128,11 +150,37 @@ In the below regex  code for matching an email:
 
 `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`
 
-We can talk about Bracket Expressions.
+We can talk about Bracket Expressions. Bracket expressions ([...]) define character sets. In the email regex:
 
-`[a-z0-9_\.-]`
+`/([a-z0-9_\.-]+)/`
 
-The guidelines for matching the group. In this code snippet, it can contain letters a-z, numbers 0-9, an underscore, hyphen, or period. The period is an escaped character, so it required the backslash in order to be able to be matched. 
+Matches lowercase letters, digits, underscores, hyphens, and periods. In this code snippet, it can contain letters a-z, numbers 0-9, an underscore, hyphen, or period. The period is an escaped character, so it required the backslash in order to be able to be matched. 
+
+Additionally, the <font color="red">'.' (dot)</font> symbol, while present in the bracket expression, holds special significance in the context of an email address.It separates the top-level domain (TLD) from the domain and subdomain. The TLD represents the highest level in the domain hierarchy (e.g., '.com', '.org').
+
+In the email regex:
+
+`/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`
+
+The last part, `([a-z\.]{2,6})`, captures the TLD and ensures that it consists of 2 to 6 lowercase letters or periods. The dot before this part ensures the presence of the <font color="red">'.'</font> symbol before the TLD.
+
+Examples:
+
+Valid: john.doe@example.com
+
+Local Part: john.doe<br/>
+'@' Symbol<br/>
+Domain Part: example.com<br/>
+Dot Symbol  <font color="red">('.')</font> separating domain and TLD.<br/>
+
+Invalid: john.doe@com
+
+Local Part: invalid.email<br/>
+'@' Symbol<br/>
+Domain Part: com<br/>
+Missing dot  <font color="red">('.')</font> before the TLD.<br/>
+
+The combination of <font color="red">'@'</font> and <font color="red">'.'</font> ensures that the email address follows the standard structure of having a local part, <font color="red">'@'</font> symbol, domain part, and <font color="red">dot symbol</font> separating the domain and TLD.
 
 ### Greedy and Lazy Match
 
